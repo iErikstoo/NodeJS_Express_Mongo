@@ -11,7 +11,7 @@ const cursoSchema =  new mongoose.Schema({
     },
     estado: {
         type: Boolean,
-        required: false
+        required: true
     },
     imagen: {
         type: String,
@@ -29,3 +29,4 @@ const cursoSchema =  new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Curso', cursoSchema);
+
