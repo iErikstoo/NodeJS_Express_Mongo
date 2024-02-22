@@ -71,3 +71,19 @@ ruta.delete('/:id',(req, res) => {
 })
 
 module.exports = ruta;
+
+//funcion asincrona para listar los cursos activos
+async function ListarCursosActivos(){
+	let cursos = await Curso.find({"estado": true});
+	return cursos;
+}
+
+//endpoint para listar cursos activos
+ruta.get('/',(req, res) => {
+	let resultado = ListarCursosActivos();
+	resultado.then(cursos => {
+	res.json(cursos);
+    }).catch(err => {
+        res.status(400).json(err);
+    })
+});    
